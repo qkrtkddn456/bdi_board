@@ -1,0 +1,52 @@
+package test;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.sql.SQLException;
+
+import org.junit.jupiter.api.Test;
+
+import com.board.bdi.common.DBCon;
+import com.board.bdi.dao.UserDAO;
+import com.board.bdi.dao.impl.UserDAOImpl;
+import com.board.bdi.vo.UserInfoVO;
+
+class UserDAOTest {
+	
+	
+	@Test
+	void selectUserTest() {
+		UserDAO udao = new UserDAOImpl();
+		udao.SetCon(DBCon.getCon());
+		try {
+			UserInfoVO ui = new UserInfoVO();
+			UserInfoVO rUi = udao.selectUser(ui);
+			assertEquals(rUi, null);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	void inserUserTest() {
+		UserDAO udao = new UserDAOImpl();
+		udao.SetCon(DBCon.getCon());
+		try {
+			UserInfoVO ui = new UserInfoVO();
+			ui.setUiid("test");
+			ui.setUiname("홍길동");
+			ui.setUipwd("1234");
+			ui.setUiemail("test@naver.com");
+			int cnt = udao.insertUser(ui);
+			assertEquals(cnt, 0);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBCon.close();
+		}
+	}
+
+}
