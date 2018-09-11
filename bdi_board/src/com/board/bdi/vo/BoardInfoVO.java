@@ -36,18 +36,36 @@ public class BoardInfoVO implements Serializable {
 
 	/** 게시판조회수. */
 	private Integer bicnt;
+	/** 게시한 활성여부. */
+	private Byte biactive;
+	
+	private Integer uinum;
+	
+	private String uiname;
 
-	/** 사용자_정보. */
-	private UserInfoVO userInfo;
 
-	/** 댓글정ㅂ 목록. */
-	private Set<CommentInfoVO> comentInfoSet;
+	public String getUiname() {
+		return uiname;
+	}
 
-	/**
-	 * 생성자.
-	 */
-	public BoardInfoVO() {
-		this.comentInfoSet = new HashSet<CommentInfoVO>();
+	public void setUiname(String uiname) {
+		this.uiname = uiname;
+	}
+
+	public Byte getBiactive() {
+		return biactive;
+	}
+
+	public void setBiactive(Byte biactive) {
+		this.biactive = biactive;
+	}
+
+	public Integer getUinum() {
+		return uinum;
+	}
+
+	public void setUinum(Integer uinum) {
+		this.uinum = uinum;
 	}
 
 	/**
@@ -184,54 +202,6 @@ public class BoardInfoVO implements Serializable {
 	}
 
 	/**
-	 * 사용자_정보을 설정합니다..
-	 * 
-	 * @param userInfo
-	 *            사용자_정보
-	 */
-	public void setUserInfo(UserInfoVO userInfo) {
-		this.userInfo = userInfo;
-	}
-
-	/**
-	 * 사용자_정보을 가져옵니다..
-	 * 
-	 * @return 사용자_정보
-	 */
-	public UserInfoVO getUserInfo() {
-		return this.userInfo;
-	}
-
-	/**
-	 * 댓글정ㅂ 목록을 설정합니다..
-	 * 
-	 * @param comentInfoSet
-	 *            댓글정ㅂ 목록
-	 */
-	public void setComentInfoSet(Set<CommentInfoVO> comentInfoSet) {
-		this.comentInfoSet = comentInfoSet;
-	}
-
-	/**
-	 * 댓글정ㅂ를 추가합니다..
-	 * 
-	 * @param comentInfo
-	 *            댓글정ㅂ
-	 */
-	public void addComentInfo(CommentInfoVO comentInfo) {
-		this.comentInfoSet.add(comentInfo);
-	}
-
-	/**
-	 * 댓글정ㅂ 목록을 가져옵니다..
-	 * 
-	 * @return 댓글정ㅂ 목록
-	 */
-	public Set<CommentInfoVO> getComentInfoSet() {
-		return this.comentInfoSet;
-	}
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -265,6 +235,13 @@ public class BoardInfoVO implements Serializable {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "BoardInfoVO [binum=" + binum + ", bititle=" + bititle + ", bitext=" + bitext + ", bifile=" + bifile
+				+ ", bicredat=" + bicredat + ", bimoddat=" + bimoddat + ", bicnt=" + bicnt + ", biactive=" + biactive
+				+ ", uinum=" + uinum + "]";
 	}
 
 }
