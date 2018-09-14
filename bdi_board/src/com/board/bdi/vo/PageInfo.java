@@ -4,7 +4,7 @@ public class PageInfo {
 	private Integer page = 1;
 	private Integer rowCnt = 10;
 	private Integer blockCnt =10;
-	private Integer totalCnt;
+	private Integer totalCnt; //1004
 	private Integer limitFNum = 0;
 	private Integer limitLnum = 10;
 	private Integer totalPage;
@@ -76,8 +76,8 @@ public class PageInfo {
 		if(totalCnt==null) {
 			//TODO 에러처리 필요
 		}
-		totalPage = (int)(Math.ceil((double)totalCnt/rowCnt));
-		totalBlock = (int)(Math.ceil((double)totalPage/blockCnt));
+		totalPage = (int)(Math.ceil((double)totalCnt/rowCnt)); //101
+		totalBlock = (int)(Math.ceil((double)totalPage/blockCnt)); 
 		limitFNum = (page-1) * rowCnt;
 		
 		sBlock = ((int)(Math.ceil((double)page/blockCnt))-1) * 10 +1;
